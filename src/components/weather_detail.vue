@@ -10,42 +10,6 @@
   <div class="weather_detail">
       <center>
        Weather Details of ID {{msg}}
-<!--
-    <table class="table" border="1px">
-        <thead>
-        <tr>
-            <th>ID</th><td>{{weather_details.id}}</td>
-        </tr>
-        <tr>
-            <th>State</th><td>{{weather_details.weather_state_name}}</td>
-        </tr>
-        <tr>
-            <th>Wind Direction</th><td>{{weather_details.wind_direction_compass}}</td>
-        </tr>
-        <tr>
-            <th>Applicable Date</th><td>{{weather_details.applicable_date}}</td>
-        </tr>
-        <tr>
-            <th>Wind Speed</th><td>{{weather_details.wind_speed}}</td>
-        </tr>
-        <tr>
-            <th>Wind Direction</th><td>{{weather_details.wind_direction}}</td>
-        </tr>
-        <tr>
-            <th>Air Pressure</th><td>{{weather_details.air_pressure}}</td>
-        </tr>
-        <tr>
-            <th>Humidity</th><td>{{weather_details.humidity}}</td>
-        </tr>
-        <tr>
-            <th>Visibility</th><td>{{weather_details.visibility}}</td>
-        </tr>
-        <tr>
-            <th>Predictability</th><td>{{weather_details.predictability}}</td>
-        </tr>
-        </thead>
-    </table>
--->
     <table class="table" border="1px">
         <thead>
         <tr>

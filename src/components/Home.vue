@@ -10,6 +10,15 @@
   <div class="home">
 
     <center>
+        <br>
+    <div class="row">
+        <div class="search-wrapper">
+            <form v-on:submit="Getsearch" action="#" method="get">
+            <input type="text" v-model="search_field"  placeholder="Search Location.."/>
+            <input type="submit" value="Search" />
+            </form>
+        </div>
+    </div><br>
     <div class="quote-area" style="margin: 0 auto">
 
       <table class="table table-hover" border="1px">
@@ -40,6 +49,7 @@
 
 <script>
     import Vue from 'vue'
+
     Vue.component('weather', {
         props: ['city','temperature','max_temp','min_temp','icon','woeid'],
         template: '<tr><td><a :href="woeid" >{{city}}</a></td><td>{{temperature}}</td><td>{{max_temp}}</td><td>{{min_temp}}</td><td><img :src="icon" /></td></tr>'
@@ -56,7 +66,8 @@
                 helsinki: "",
                 dublin: "",
                 vancouver: "",
-                cities: ['London', 'Berlin', 'Istanbul','Helsinki','Dublin','Vancouver']
+                cities: ['London', 'Berlin', 'Istanbul','Helsinki','Dublin','Vancouver'],
+                search_field:''
             }
         },
         mounted() {
@@ -113,7 +124,14 @@
                 console.error(error);
             });
         },
-        methods: { }
+        methods: {
+
+            Getsearch: function(event){
+
+                event.preventDefault();
+                window.location.href = '/search/'+this.search_field;
+            }
+        }
 
 
 }

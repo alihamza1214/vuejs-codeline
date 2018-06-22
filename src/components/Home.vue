@@ -24,12 +24,12 @@
 
         </thead>
         <tbody>
-         <weather city="London" :temperature="london.the_temp" :max_temp="london.max_temp" :min_temp="london.min_temp" :icon="london.icon"></weather>
-         <weather city="Berlin" :temperature="berlin.the_temp" :max_temp="berlin.max_temp" :min_temp="berlin.min_temp" :icon="berlin.icon"></weather>
-         <weather city="Istanbul" :temperature="istanbul.the_temp" :max_temp="istanbul.max_temp" :min_temp="istanbul.min_temp" :icon="istanbul.icon"></weather>
-         <weather city="Helsinki" :temperature="helsinki.the_temp" :max_temp="helsinki.max_temp" :min_temp="helsinki.min_temp" :icon="helsinki.icon"></weather>
-         <weather city="Dublin" :temperature="dublin.the_temp" :max_temp="dublin.max_temp" :min_temp="dublin.min_temp" :icon="dublin.icon"></weather>
-         <weather city="Vancouver" :temperature="vancouver.the_temp" :max_temp="vancouver.max_temp" :min_temp="vancouver.min_temp" :icon="vancouver.icon"></weather>
+         <weather city="London" :woeid="london.woeid" :temperature="london.the_temp" :max_temp="london.max_temp" :min_temp="london.min_temp" :icon="london.icon"></weather>
+         <weather city="Berlin" :woeid="berlin.woeid" :temperature="berlin.the_temp" :max_temp="berlin.max_temp" :min_temp="berlin.min_temp" :icon="berlin.icon"></weather>
+         <weather city="Istanbul" :woeid="istanbul.woeid" :temperature="istanbul.the_temp" :max_temp="istanbul.max_temp" :min_temp="istanbul.min_temp" :icon="istanbul.icon"></weather>
+         <weather city="Helsinki" :woeid="helsinki.woeid" :temperature="helsinki.the_temp" :max_temp="helsinki.max_temp" :min_temp="helsinki.min_temp" :icon="helsinki.icon"></weather>
+         <weather city="Dublin" :woeid="dublin.woeid" :temperature="dublin.the_temp" :max_temp="dublin.max_temp" :min_temp="dublin.min_temp" :icon="dublin.icon"></weather>
+         <weather city="Vancouver" :woeid="vancouver.woeid" :temperature="vancouver.the_temp" :max_temp="vancouver.max_temp" :min_temp="vancouver.min_temp" :icon="vancouver.icon"></weather>
         </tbody>
       </table>
     </div>
@@ -41,8 +41,8 @@
 <script>
     import Vue from 'vue'
     Vue.component('weather', {
-        props: ['city','temperature','max_temp','min_temp','icon'],
-        template: '<tr><td>{{city}}</td><td>{{temperature}}</td><td>{{max_temp}}</td><td>{{min_temp}}</td><td><img :src="icon" /></td></tr>'
+        props: ['city','temperature','max_temp','min_temp','icon','woeid'],
+        template: '<tr><td><a :href="woeid" >{{city}}</a></td><td>{{temperature}}</td><td>{{max_temp}}</td><td>{{min_temp}}</td><td><img :src="icon" /></td></tr>'
     })
     import axios from "axios";
 
@@ -63,6 +63,7 @@
             axios({ method: "GET", "url": "https://cart.omnisell.pk/weather.php?command=location&woeid=44418"}).then(result => {
                 this.london = result.data.consolidated_weather[0];
                 this.london.icon = "https://www.metaweather.com/static/img/weather/ico/"+result.data.consolidated_weather[0].weather_state_abbr+".ico";
+                this.london.woeid = "weather/44418";
             }, error => {
                 console.error(error);
             });
@@ -70,6 +71,7 @@
             axios({ method: "GET", "url": "https://cart.omnisell.pk/weather.php?command=location&woeid=638242"}).then(result => {
                 this.berlin = result.data.consolidated_weather[0];
                 this.berlin.icon = "https://www.metaweather.com/static/img/weather/ico/"+result.data.consolidated_weather[0].weather_state_abbr+".ico";
+                this.berlin.woeid = "/weather/638242";
 
             }, error => {
                 console.error(error);
@@ -78,6 +80,7 @@
             axios({ method: "GET", "url": "https://cart.omnisell.pk/weather.php?command=location&woeid=2344116"}).then(result => {
                 this.istanbul = result.data.consolidated_weather[0];
                 this.istanbul.icon = "https://www.metaweather.com/static/img/weather/ico/"+result.data.consolidated_weather[0].weather_state_abbr+".ico";
+                this.istanbul.woeid = "/weather/2344116";
 
             }, error => {
                 console.error(error);
@@ -86,6 +89,7 @@
             axios({ method: "GET", "url": "https://cart.omnisell.pk/weather.php?command=location&woeid=565346"}).then(result => {
                 this.helsinki = result.data.consolidated_weather[0];
                 this.helsinki.icon = "https://www.metaweather.com/static/img/weather/ico/"+result.data.consolidated_weather[0].weather_state_abbr+".ico";
+                this.helsinki.woeid = "/weather/565346";
 
             }, error => {
                 console.error(error);
@@ -94,6 +98,7 @@
             axios({ method: "GET", "url": "https://cart.omnisell.pk/weather.php?command=location&woeid=560743"}).then(result => {
                 this.dublin = result.data.consolidated_weather[0];
                 this.dublin.icon = "https://www.metaweather.com/static/img/weather/ico/"+result.data.consolidated_weather[0].weather_state_abbr+".ico";
+                this.dublin.woeid = "/weather/560743";
 
             }, error => {
                 console.error(error);
@@ -102,6 +107,7 @@
             axios({ method: "GET", "url": "https://cart.omnisell.pk/weather.php?command=location&woeid=9807"}).then(result => {
                 this.vancouver = result.data.consolidated_weather[0];
                 this.vancouver.icon = "https://www.metaweather.com/static/img/weather/ico/"+result.data.consolidated_weather[0].weather_state_abbr+".ico";
+                this.vancouver.woeid = "/weather/9807";
 
             }, error => {
                 console.error(error);

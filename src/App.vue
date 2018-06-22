@@ -13,9 +13,10 @@
 
 <script>
 import Home from "./components/Home";
+import weather_detail from "./components/weather_detail";
 export default {
   name: 'App',
-    components: {Home}
+    components: {Home,weather_detail}
 }
 </script>
 
